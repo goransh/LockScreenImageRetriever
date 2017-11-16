@@ -38,7 +38,9 @@ namespace LockScreenImageRetriever {
 
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(selectedPath)) {
 
-                foreach (string file in FindFiles()) {
+                string[] files = FindFiles();
+
+                foreach (string file in files) {
 
                     string[] path = file.Split(Path.DirectorySeparatorChar);
                     string name = path[path.Length - 1];
@@ -51,7 +53,7 @@ namespace LockScreenImageRetriever {
                     }
                 }
 
-                MessageBox.Show($"Images successfully saved to {selectedPath}.", "Success",
+                MessageBox.Show($"Successfully saved {files.Length} files to {selectedPath}.", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
