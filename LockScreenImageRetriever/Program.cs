@@ -50,10 +50,11 @@ namespace LockScreenImageRetriever {
                         Console.WriteLine(e.GetBaseException().Message);
                     }
                 }
+
+                MessageBox.Show($"Images successfully saved to {selectedPath}.", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            MessageBox.Show($"Images successfully saved to {selectedPath}.", "Success",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
