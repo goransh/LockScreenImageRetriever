@@ -37,15 +37,17 @@ namespace LockScreenImageRetriever {
             string selectedPath = folderBrowser.SelectedPath;
 
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(selectedPath)) {
-                foreach (var file in FindFiles()) {
-                    string[] path = file.Split('\\');
+
+                foreach (string file in FindFiles()) {
+
+                    string[] path = file.Split(Path.DirectorySeparatorChar);
                     string name = path[path.Length - 1];
+
                     try {
-                        File.Copy(file, selectedPath + @"\" + name + ".jpg", true);
+                        File.Copy(file, $"{selectedPath}{Path.DirectorySeparatorChar}{name}.jpg", true);
                     }
                     catch (IOException e) {
                         Console.WriteLine(e.GetBaseException().Message);
-                        throw;
                     }
                 }
             }
